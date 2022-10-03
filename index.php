@@ -10,7 +10,12 @@
     <header>
     <a href="index.php"><h1>TrackU</h1></a>
 
-    
+    <?php 
+        session_start();
+        if(isset($_SESSION['username']) && $_SESSION['username'] !== ''){
+            header('Location: ./home.php');
+        }
+    ?>
     
 </header>
         <div class="form-box">

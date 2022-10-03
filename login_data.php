@@ -27,7 +27,7 @@ if (isset($_POST['login_button'])){
         if ($row['username'] === $uname && $row['password'] === $pass) {
             session_start();
             $_SESSION['username']=$uname;
-            echo "<script>window.location.href='home.php'</script>";
+           echo "<script>window.location.href='home.php'</script>";
 
         }
 
