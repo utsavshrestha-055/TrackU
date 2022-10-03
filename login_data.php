@@ -25,7 +25,8 @@ if (isset($_POST['login_button'])){
         $row = mysqli_fetch_assoc($result);
 
         if ($row['username'] === $uname && $row['password'] === $pass) {
-
+            session_start();
+            $_SESSION['username']=$uname;
             echo "<script>window.location.href='home.php'</script>";
 
         }
