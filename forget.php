@@ -23,20 +23,25 @@
     
 </header>
         <div class="form-box">
-        <button class="employee-btn"> LogIn 
+        <button class="employee-btn"> Forget
         </button>
             
-            <form method="POST" id="login" action="database/employee_login_data.php" class="input-group">
+            <form method="POST" id="login" action="forget_data.php" class="input-group">
         
       
 
                 <br>
                 <br>
-                <input type="text" name="user_name" class="input-field" placeholder="Username" required>
-                <input type="password" class="input-field" name="pass_word" placeholder="Password" required>
-                <input type="checkbox" class="check-box" required><span>I agree to the terms and conditions.</span>
-            <button type="submit" name="login_button" class="submit-btn">Log In</button>
-            
+                <input type="text" name="user_name" class="input-field" placeholder="email" required>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                
+
+                 <button type="submit" name="search-button" class="submit-btn">search</button>
+                
             </form>
      
         

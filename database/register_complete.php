@@ -1,14 +1,25 @@
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="style_main.css">
+    <link rel="stylesheet" href="../css/logstyles.css">
 <body>
     <div class="main">
         <div class="form-box">
             <img src="logo.webp" alt="Paris" class="logo">
             
             
-            <form id="login" action="home.php" class="input-group">
+            <form id="login" action=".php" class="input-group">
                 <p class="register_message"><h3>Thank you for joining us.</h3><br>
                     <br>
                     <br>
