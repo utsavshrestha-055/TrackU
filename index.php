@@ -6,7 +6,12 @@ session_start();
 if(!isset($_SESSION['username'])){
     header('location:login.php');
 }
-?>
+   $uname=$_SESSION['username'];
+     $sql = "SELECT * FROM users WHERE username='$uname'";
+
+     $result = mysqli_query($con, $sql);
+
+     ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +20,7 @@ if(!isset($_SESSION['username'])){
     <title>Admin Dashboard</title>
 
     <!-- Montserrat Font -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Material Icons -->
@@ -24,6 +30,18 @@ if(!isset($_SESSION['username'])){
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
+    <?php 
+    
+    while($rows=mysqli_fetch_assoc($result))
+    {
+      ?>
+
+      <?php
+    echo $rows['username'];
+    ?>
+    <?php
+    }
+    ?>
     <div class="grid-container">
 
       <!-- Header -->
@@ -41,7 +59,7 @@ if(!isset($_SESSION['username'])){
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-            <span class="material-icons-outlined">shopping_cart</span> <img src="images\download.png" width="50" height="50">TRACK_U
+           <img src="Images/logo_200x200.png" width= "100px" height= "100px">TRACK_U
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -82,15 +100,15 @@ if(!isset($_SESSION['username'])){
 
           <div class="card">
             <div class="card-inner">
-              <h3>PRODUCTS</h3>
-              <span class="material-icons-outlined">inventory_2</span>
+              <h3>TRACK</h3>
+              <span class="material-icons-outlined"><i class='fas fa-route'></i> </span>
             </div>
             <h1>249</h1>
           </div>
 
           <div class="card">
-            <div class="card-inner"
-              <h3>CATEGORIES</h3>
+            <div class="card-inner">
+            <h3> CATEGORIES</h3>
               <span class="material-icons-outlined">category</span>
             </div>
             <h1>25</h1>
