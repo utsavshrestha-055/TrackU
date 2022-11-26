@@ -17,7 +17,7 @@
         From: "utsavxtha1000@gmail.com",
         Subject: "Sending Email using javascript",
         Body: "Well that was easy!!",
-        //document.getElementbyid("idname").value;
+       //document.getElementbyid("idname").value;
       }).then(
   message => alert("done")
 );
@@ -25,4 +25,4 @@
   </script>
   </head>
   </html>
-  
+
