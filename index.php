@@ -4,26 +4,38 @@ require('database/connection.php');
 session_start();
 
 if(!isset($_SESSION['username'])){
-    header('location:login.php');
+  header('location:login.php');
 }
-?>
+   $uname=$_SESSION['username'];
+     $sql = "SELECT * FROM details WHERE username='$uname'";
+
+     $result = mysqli_query($con, $sql);
+     $rows=mysqli_fetch_assoc($result);
+
+     ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Dashboard</title>
 
     <!-- Montserrat Font -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
+
+    
+
+    
     <div class="grid-container">
 
       <!-- Header -->
@@ -32,7 +44,11 @@ if(!isset($_SESSION['username'])){
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-right">
-        <span class="material-icons-outlined">account_circle</span>
+          
+    <?php 
+    echo "<h2>".$rows['sname']."</h2>";
+      ?>
+       
         </div>
       </header>
       <!-- End Header -->
@@ -41,32 +57,34 @@ if(!isset($_SESSION['username'])){
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-            <span class="material-icons-outlined">shopping_cart</span> <img src="images\download.png" width="50" height="50">TRACK_U
+           <img src="Images/logo_200x200.png" width= "100px" height= "100px">TRACK_U
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">dashboard</span> Dashboard
+            <span class="material-icons-outlined">dashboard</span>Dashboard
+
           </li>
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">inventory_2</span> Track your child
+            <span class="material-icons-outlined"><a href='track.php'>dashboard</span>Track</a>
+
           </li>
+
+
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">category</span> Contact Us
+            <span class="material-icons-outlined"></span><a href='report.php'><i class="fa fa-address-book-o"></i>Contact Us</a>
           </li>
           <li class="sidebar-list-item"> 
-            <span class="material-icons-outlined">groups</span> About Us
+            <span class="material-icons-outlined">groups</span><a href='contact.php'>About Us</a>
           </li>
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">fact_check</span> Report Problems
+            <span class="material-icons-outlined">fact_check</span><a href='report.php'> Report Your Problem</a>
           </li>
+
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">poll</span> Reports
-          </li>
-          <li class="sidebar-list-item">
-            <span class="material-icon-outlined">close</span> <a href='logout.php'>log out</a>
+            <span class="material-icon-outlined"></span> <a href='logout.php'><i class="fa fa-sign-out "style="font-size:36px"></i> Log out</a>
             </li>
         </ul>
       </aside>
@@ -75,59 +93,127 @@ if(!isset($_SESSION['username'])){
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <h2>DASHBOARD</h2>
+            <?php 
+            echo "<h3>Welcome ".$rows['username'].",</h3>";
+             ?>
         </div>
 
         <div class="main-cards">
 
           <div class="card">
             <div class="card-inner">
-              <h3>PRODUCTS</h3>
-              <span class="material-icons-outlined">inventory_2</span>
+              <h2><b>NAME</b></h2>
+              <span class="material-icons-outlined"> </span>
             </div>
-            <h1>249</h1>
-          </div>
-
-          <div class="card">
-            <div class="card-inner"
-              <h3>CATEGORIES</h3>
-              <span class="material-icons-outlined">category</span>
-            </div>
-            <h1>25</h1>
+            <?php 
+    echo "<h3>".$rows['cname']."</h3>";
+      ?>
+            
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <h3>CUSTOMERS</h3>
-              <span class="material-icons-outlined">groups</span>
-            </div>
-            <h1>1500</h1>
+  
+            <h2><b>CLASS</b></h2>
+              <span class="material-icons-outlined"></span>
+            </div>        
+            <?php 
+  echo "<h3>".$rows['cclass']."</h3>";
+      ?>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <h3>ALERTS</h3>
-              <span class="material-icons-outlined">notification_important</span>
+              <h2><b>ROLL</b></h2>
+              <span class="material-icons-outlined"></span>
             </div>
-            <h1>56</h1>
+            <?php 
+   echo "<h3>".$rows['croll']."</h3>";
+      ?>
           </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h2><b>SECTION</b></h2>
+              <span class="material-icons-outlined"></span>
+            </div>
+            <?php 
+   echo "<h3>".$rows['csection']."</h3>";
+      ?>
+          </div>
+          
+
+
 
         </div>
-
-        <div class="charts">
-
-          <div class="charts-card">
-            <h2 class="chart-title">Top 5 Products</h2>
-            <div id="bar-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <h2 class="chart-title">Purchase and Sales Orders</h2>
-            <div id="area-chart"></div>
-          </div>
-
+        <main class="main-container">
+        <div class="main-title">
+           
         </div>
-      </main>
+
+         <div class="main-cards">
+
+          <div class="pcard">
+            <div class="card-inner">
+              <h2><b>Mother's Name</b></h2>
+              <span class="material-icons-outlined"> </span>
+            </div>
+            <?php 
+   echo "<h3>".$rows['mname']."</h3>";
+      ?>
+            
+          </div>
+
+          <div class="pcard">
+            <div class="pcard-inner">
+  
+            <h2><b>Father's Name</b> </h2>
+              <span class="material-icons-outlined"></span>
+            </div>        
+            <?php 
+    echo "<h3>".$rows['fname']."</h3>";
+      ?>
+          </div>
+
+          <div class="pcard">
+            <div class="card-inner">
+              <h2><b>PHONE</b></h2>
+              <span class="material-icons-outlined"></span>
+            </div>
+            <?php 
+   echo "<h3>".$rows['phone']."</h3>";
+      ?></div>
+      <div class="pcard">
+            <div class="pcard-inner">
+            <h2><b>ATTENDANCE</b></h2>
+              <span class="material-icons-outlined"></span>
+            </div>        
+            <?php 
+   echo "<h3>".$rows['attendance']."</h3>";
+      ?>
+          </div>
+</div>
+<div class="charts">
+
+<div class="charts-card">
+  <h2 class="chart-title"></h2><h3>School Starts At: 9:00 AM</h3>
+  <?php 
+   echo "<h3>"."School Departure Time: ".$rows['pick']."</h3>";
+      ?>
+  <div id="bar-chart"></div>
+</div>
+
+<div class="charts-card">
+  <h2 class="chart-title"></h2><h3>School Ends At: 04:00 PM </h3>
+  <?php 
+   echo "<h3>"."School Departure Time: ".$rows['departure']."</h3>";
+      ?>
+  <div id="area-chart"></div>
+</div>
+
+</div>
+</main>
+<!-- End Main -->
       <!-- End Main -->
 
     </div>
@@ -139,3 +225,4 @@ if(!isset($_SESSION['username'])){
     <script src="js/scripts.js"></script>
   </body>
 </html>
++ 

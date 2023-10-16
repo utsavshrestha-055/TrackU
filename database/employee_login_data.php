@@ -16,7 +16,7 @@ if (isset($_POST['login_button'])){
      $uname = validate($_POST['user_name']);
  
      $pass = validate($_POST['pass_word']);
-     $sql = "SELECT * FROM users WHERE username='$uname' AND password='$pass'";
+     $sql = "SELECT * FROM employee WHERE username='$uname' AND password='$pass'";
 
      $result = mysqli_query($con, $sql);
 

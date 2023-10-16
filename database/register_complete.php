@@ -1,40 +1,27 @@
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
+<html>
+ 
 <head>
-    <title></title>
-    <link rel="stylesheet" href="../css/logstyles.css">
-<body>
-    <div class="main">
-        <div class="form-box">
-            <img src="logo.webp" alt="Paris" class="logo">
-            
-            
-            <form id="login" action=".php" class="input-group">
-                <p class="register_message"><h3>Thank you for joining us.</h3><br>
-                    <br>
-                    <br>
-                    
-                Your details has been sent to the admin department of school. It will take about two days to verfy your details and new username and password will be assigned to you.<br>
-            <br>
-            
-                <br><h4>Please check your email for the updates.</h4><br>
-            <br>
-        <Br>
-    </p>
-                <button type="submit" class="submit-btn">Okay</button>
-            </form>
-</div>
-</div>
-</body>
-</head>
-</html>
+  <title>Send Mail</title>
+  <script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
+ 
+  <script type="text/javascript">
+    function sendEmail() {
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "bhattaraisatya.7.com",
+        Password: "quwnnfarbmymmcvt",
+        To: 'utsavxtha1000@gmail.com',
+        From: "bhattaraisatya.7@gmail.com",
+        Subject: "Sending Email using javascript",
+        Body: "Well that was easy!!",
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+    }
+  </script>
+  </head>
+  </html>
